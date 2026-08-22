@@ -1,73 +1,86 @@
-PROJECT TILTLE :  Farmers Direct Produce Marketplace Portal 
+# FARMERS DIRECT PRODUCE MARKETPLACE PORTAL
 
-PROPOSAL :
+## Problem Statement
 
-         FarmLink Direct is a digital marketplace that empowers small farmers to list their fresh produce directly for local buyers, eliminating exploitative intermediaries. The portal enables buyers to search and filter listings by type and location, ensuring fair pricing and supply chain transparency. Through integrated order/inquiry features, buyers can directly connect with farmers, while farmers retain full control to update or remove listings as inventory changes. This solution boosts farmer incomes, reduces food waste, and provides communities with access to fresher, locally-sourced produce.
+Small farmers largely depend on intermediaries to sell their produce, which reduces their earnings, while local buyers have no easy way to purchase fresh produce directly from nearby farmers at a fair price.
 
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              CLIENT LAYER                                  │
-│  ┌───────────────┐    ┌───────────────┐    ┌───────────────────────────┐  │
-│  │   Web Browser  │    │  Mobile Web   │    │   Admin Dashboard         │  │
-│  │  (React SPA)   │    │  (Responsive) │    │   (React + Bootstrap)     │  │
-│  └───────┬───────┘    └───────┬───────┘    └─────────────┬─────────────┘  │
-└──────────┼────────────────────┼────────────────────────────┼───────────────┘
-           │ HTTPS / REST APIs  │                            │
-           ▼                    ▼                            ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           APPLICATION LAYER                                │
-│                          (Django / Node.js)                                 │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                         API GATEWAY                                 │   │
-│  │  (Authentication, Rate Limiting, Request Routing)                   │   │
-│  └───────────────────────────┬─────────────────────────────────────────┘   │
-│                               │                                             │
-│  ┌────────────────────────────┴─────────────────────────────────────────┐  │
-│  │                      BUSINESS LOGIC (MVC)                            │  │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐  │  │
-│  │  │ User Service │  │ Listing      │  │ Order/Inquiry Service    │  │  │
-│  │  │ (Auth/RBAC)  │  │ Service      │  │ (CRUD, Status Tracking) │  │  │
-│  │  └──────────────┘  └──────────────┘  └──────────────────────────┘  │  │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐  │  │
-│  │  │ Search       │  │ Geolocation  │  │ Notification Service     │  │  │
-│  │  │ Service      │  │ Service      │  │ (Email/SMS/Push)         │  │  │
-│  │  └──────────────┘  └──────────────┘  └──────────────────────────┘  │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└──────────────────────────────────┬──────────────────────────────────────────┘
-                                   │
-           ┌───────────────────────┼───────────────────────┐
-           ▼                       ▼                       ▼
-┌──────────────────┐  ┌─────────────────────┐  ┌────────────────────────┐
-│   DATABASE       │  │   CACHE LAYER       │  │   FILE STORAGE         │
-│   LAYER          │  │   (Redis)           │  │   (AWS S3)             │
-│                  │  │                     │  │                         │
-│ ┌──────────────┐ │  │  ┌───────────────┐  │  │  ┌───────────────────┐ │
-│ │ PostgreSQL   │ │  │  │ Session Store │  │  │  │ Produce Images    │ │
-│ │ + PostGIS    │ │  │  │ Search Cache  │  │  │  │ Farmer Profiles   │ │
-│ │ (Geo-spatial)│ │  │  │ Rate Limiting │  │  │  │                   │ │
-│ └──────────────┘ │  │  └───────────────┘  │  │  └───────────────────┘ │
-└──────────────────┘  └─────────────────────┘  └────────────────────────┘
-                                   │
-                                   ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                        EXTERNAL INTEGRATIONS                                │
-│  ┌────────────────┐  ┌────────────────┐  ┌──────────────────────────────┐ │
-│  │  Google Maps   │  │  Twilio/SendGrid│  │  Payment Gateway (Future)   │ │
-│  │  API (Maps/Geo)│  │  (Notifications)│  │  (Razorpay/Stripe)           │ │
-│  └────────────────┘  └────────────────┘  └──────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────────────────┘
- 
-Technology Stack :
-React.js – Frontend
-HTML – Webpage structure
-CSS – Styling
-Bootstrap – Responsive design
-JavaScript – Frontend functionality
-Node.js – Backend runtime
-Express.js – Backend framework
-MySQL – Database
-REST API – Frontend–backend communication
+## Proposal
 
-TEAM MEMBERS:
-ANUSOUNDHARYA K - 73152413012
-DHARANIKANTH M - 73152413042
+FarmLink Direct is a web-based marketplace that connects farmers directly with local buyers. Farmers can register, add and manage their produce, set prices and quantities, and view customer orders. Buyers can browse, search, and filter fresh produce based on type and location, and place orders or send inquiries. The system reduces dependency on intermediaries, supports fair pricing, and provides customers with easier access to fresh, locally sourced produce.
 
+## System Architecture
+
+```text
+                 FARMERS / CUSTOMERS / ADMIN
+                            │
+                            ▼
+                ┌─────────────────────┐
+                │      FRONTEND       │
+                │     React.js        │
+                │ HTML + CSS + JS     │
+                │     Bootstrap       │
+                └──────────┬──────────┘
+                           │
+                        REST API
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │       BACKEND       │
+                │      Node.js        │
+                │     Express.js      │
+                │   Business Logic    │
+                └──────────┬──────────┘
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │      DATABASE       │
+                │        MySQL        │
+                └─────────────────────┘
+```
+
+## Main Modules
+
+### Farmer
+
+* Register / Login
+* Add Products
+* Set Price and Quantity
+* Update / Remove Products
+* View Customer Orders
+* Manage Sales
+
+### Customer
+
+* Register / Login
+* Browse Products
+* Search and Filter Products
+* View Farmer Details
+* Place Orders
+* Send Inquiries
+* Track Order Status
+
+### Admin
+
+* Manage Farmers and Customers
+* Manage Products
+* Monitor Orders
+* Manage Users
+* View System Activities
+
+## Technology Stack
+
+1. **React.js** – Frontend development
+2. **HTML** – Webpage structure
+3. **CSS** – Styling
+4. **Bootstrap** – Responsive design
+5. **JavaScript** – Frontend functionality
+6. **Node.js** – Backend runtime
+7. **Express.js** – Backend framework
+8. **MySQL** – Database
+9. **REST API** – Frontend–backend communication
+10. **Git & GitHub** – Version control
+
+## Team Members
+
+**ANUSOUNDHARYA K** – 73152413012
+**DHARANIKANTH M** – 73152413042
