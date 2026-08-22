@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FBF6EC;
+  color: #152318;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Fraunces', serif;
+}
+
+::selection { background-color: #D9A441; color: #152318; }
+
+/* crate-tag price badge, the signature motif */
+.price-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.tag-notch::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: #FBF6EC;
+  border-radius: 50%;
+  border: 1px solid rgba(21,35,24,0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #D9A441;
+  outline-offset: 2px;
+}
