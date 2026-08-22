@@ -2,7 +2,7 @@ PROJECT TILTLE :  Farmers Direct Produce Marketplace Portal
 
 PROPOSAL :
 
- FarmLink Direct is a digital marketplace that empowers small farmers to list their fresh produce directly for local buyers, eliminating exploitative intermediaries. The portal enables buyers to search and filter listings by type and location, ensuring fair pricing and supply chain transparency. Through integrated order/inquiry features, buyers can directly connect with farmers, while farmers retain full control to update or remove listings as inventory changes. This solution boosts farmer incomes, reduces food waste, and provides communities with access to fresher, locally-sourced produce.
+         FarmLink Direct is a digital marketplace that empowers small farmers to list their fresh produce directly for local buyers, eliminating exploitative intermediaries. The portal enables buyers to search and filter listings by type and location, ensuring fair pricing and supply chain transparency. Through integrated order/inquiry features, buyers can directly connect with farmers, while farmers retain full control to update or remove listings as inventory changes. This solution boosts farmer incomes, reduces food waste, and provides communities with access to fresher, locally-sourced produce.
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                              CLIENT LAYER                                  │
